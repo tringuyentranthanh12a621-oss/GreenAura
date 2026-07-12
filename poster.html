@@ -132,11 +132,31 @@
     }
     .footer-poster strong{color:var(--forest)}
 
-    /* Print & config */
+    /* Print */
+    @page { size: A4 portrait; margin: 0; }
     @media print{
-      body{background:#fff;padding:0}
-      .page{width:210mm;height:297mm;box-shadow:none}
-      .no-print{display:none}
+      body{background:#fff;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      .page{width:210mm;height:297mm;box-shadow:none;overflow:hidden}
+      .no-print{display:none!important}
+      .header{padding:18mm 18mm 14mm;clip-path:none}
+      .main{padding:8mm 16mm 6mm;gap:6mm}
+      .top-section{gap:8mm}
+      .mascot-area{width:62mm}
+      .mascot-circle{width:56mm;height:56mm}
+      .prizes-area{gap:4mm}
+      .prizes-grid{gap:3mm}
+      .prize-box{padding:3mm}
+      .prize-box .icon{width:13mm;height:13mm}
+      .prize-box b{font-size:11px}
+      .prize-box span{font-size:8px}
+      .bottom-section{gap:6mm}
+      .qr-card{width:58mm;padding:4mm}
+      .qr-wrap img{width:38mm;height:38mm}
+      .steps{padding:4mm}
+      .steps h4{font-size:14px}
+      .step{font-size:10px}
+      .event-note{font-size:10px;padding:3mm 4mm}
+      .footer-poster{padding:3mm 16mm 5mm;font-size:9px}
     }
     @media(max-width:768px){
       .page{width:100%;height:auto}
