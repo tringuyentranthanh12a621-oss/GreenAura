@@ -14,7 +14,7 @@ bằng ảnh thật (PNG/JPG), giữ nguyên tên file:
 
   assets/logo-green-aura.png     -> Logo chính Green Aura (đã có từ PDF)
   assets/logo-icon.png           -> Biểu tượng hoa/icon (đã có từ PDF)
-  assets/mascot.png              -> Linh vật GreenAura (đã có từ PDF)
+  assets/mascot.png              -> Linh vật Greenaura (đã có từ PDF)
   assets/prize-keychain.svg      -> Móc khóa          (placeholder, hãy thay)
   assets/prize-fan.svg           -> Quạt cầm tay      (placeholder, hãy thay)
   assets/prize-voucher.svg       -> Voucher           (placeholder, hãy thay)
