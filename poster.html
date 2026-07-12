@@ -223,63 +223,15 @@
     </footer>
   </div>
 
-  <button class="config-toggle no-print" id="configToggle" onclick="toggleConfig()">⚙️ Cấu hình QR</button>
-  <div class="config no-print" id="configPanel" style="display:none">
-    <h4>Cấu hình link QR</h4>
-    <div id="configMsg"></div>
-    <label>LINK TRANG VÒNG QUAY</label>
-    <input id="urlInput" type="url" placeholder="https://.../index.html">
-    <button id="updateQr">Cập nhật mã QR</button>
-  </div>
-
   <div class="no-print" style="position:fixed;bottom:20px;right:20px;display:flex;gap:10px;z-index:100">
-    <button onclick="window.print()">In poster (Ctrl+P)</button>
+    <button onclick="window.print()" style="border:0;border-radius:999px;background:var(--forest);color:#fff;padding:12px 20px;font-weight:800;font-family:'Mali',sans-serif;cursor:pointer">In poster (Ctrl+P)</button>
     <a href="qr-code.html" style="padding:12px 20px;border-radius:999px;font-weight:800;font-family:'Mali',sans-serif;text-decoration:none;background:#fff;color:var(--forest);border:2px solid var(--forest)">Trang QR nhỏ</a>
   </div>
 
 <script>
 const qrImg = document.getElementById('qr');
-const urlInput = document.getElementById('urlInput');
-const configMsg = document.getElementById('configMsg');
-
-function getDefaultUrl(){
-  return location.href.replace(/poster\.html(?:\?.*)?$/,'index.html');
-}
-
-function setMsg(text, type){
-  configMsg.className = type === 'ok' ? 'ok' : 'warn';
-  configMsg.textContent = text;
-}
-
-function makeQR(url){
-  qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=520x520&margin=14&color=2B4A32&bgcolor=FCF8F3&data=' + encodeURIComponent(url);
-}
-
-const defaultUrl = getDefaultUrl();
-urlInput.value = defaultUrl;
-makeQR(defaultUrl);
-
-if(/localhost|127\.0\.0\.1|::1|file:/i.test(defaultUrl)){
-  setMsg('Bạn đang dùng localhost (127.0.0.1). Điện thoại sẽ KHÔNG quét được. Hãy sửa link thành URL thật sau khi upload lên hosting/Vercel.', 'warn');
-} else {
-  setMsg('Link hợp lệ. Mã QR đã sẵn sàng để in.', 'ok');
-}
-
-document.getElementById('updateQr').onclick = () => {
-  const u = urlInput.value.trim();
-  if(!u) return;
-  makeQR(u);
-  if(/localhost|127\.0\.0\.1|::1|file:/i.test(u)){
-    setMsg('Link vẫn là localhost. Hãy dùng URL công khai để điện thoại quét được.', 'warn');
-  } else {
-    setMsg('Đã cập nhật mã QR với link mới.', 'ok');
-  }
-};
-
-function toggleConfig(){
-  const panel = document.getElementById('configPanel');
-  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-}
+const baseUrl = location.href.replace(/poster\.html(?:\?.*)?$/,'index.html');
+qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=520x520&margin=14&color=2B4A32&bgcolor=FCF8F3&data=' + encodeURIComponent(baseUrl);
 </script>
 </body>
 </html>
