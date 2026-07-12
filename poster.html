@@ -135,13 +135,14 @@
     /* Print */
     @page { size: A4 portrait; margin: 0; }
     @media print{
-      body{background:#fff;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      html,body{background:#fff;margin:0;padding:0;width:210mm;height:297mm;overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}
       .page{
         width:210mm;height:297mm;box-shadow:none;overflow:hidden;
-        transform:scale(0.88);transform-origin:top center;
-        margin:0 auto;
+        transform:scale(0.82);transform-origin:top center;
+        margin:0 auto;position:absolute;top:0;left:0;right:0;
       }
       .no-print{display:none!important}
+      *{page-break-inside:avoid!important;break-inside:avoid!important}
       .header{padding:18mm 18mm 14mm;clip-path:none}
       .main{padding:8mm 16mm 6mm;gap:6mm}
       .top-section{gap:8mm}
