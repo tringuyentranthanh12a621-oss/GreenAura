@@ -138,30 +138,12 @@
       html,body{background:#fff;margin:0;padding:0;width:210mm;height:297mm;overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}
       .page{
         width:210mm;height:297mm;box-shadow:none;overflow:hidden;
-        transform:scale(0.82);transform-origin:top center;
-        margin:0 auto;position:absolute;top:0;left:0;right:0;
+        zoom:0.85;
+        -moz-transform:scale(0.85);-moz-transform-origin:top center;
+        margin:0 auto;
       }
       .no-print{display:none!important}
       *{page-break-inside:avoid!important;break-inside:avoid!important}
-      .header{padding:18mm 18mm 14mm;clip-path:none}
-      .main{padding:8mm 16mm 6mm;gap:6mm}
-      .top-section{gap:8mm}
-      .mascot-area{width:62mm}
-      .mascot-circle{width:56mm;height:56mm}
-      .prizes-area{gap:4mm}
-      .prizes-grid{gap:3mm}
-      .prize-box{padding:3mm}
-      .prize-box .icon{width:13mm;height:13mm}
-      .prize-box b{font-size:11px}
-      .prize-box span{font-size:8px}
-      .bottom-section{gap:6mm}
-      .qr-card{width:58mm;padding:4mm}
-      .qr-wrap img{width:38mm;height:38mm}
-      .steps{padding:4mm}
-      .steps h4{font-size:14px}
-      .step{font-size:10px}
-      .event-note{font-size:10px;padding:3mm 4mm}
-      .footer-poster{padding:3mm 16mm 5mm;font-size:9px}
     }
     @media(max-width:768px){
       .page{width:100%;height:auto}
@@ -195,7 +177,7 @@
       </div>
       <div class="headline">
         <h1>Vòng quay may mắn</h1>
-        <p>Quét mã QR để tham gia ngay. Cơ hội nhận quà xanh từ Green Aura và linh vật Mộc Linh.</p>
+        <p>Quét mã QR để tham gia ngay. Cơ hội nhận quà xanh từ Green Aura và GreenAura.</p>
       </div>
     </header>
 
@@ -203,9 +185,9 @@
       <div class="top-section">
         <div class="mascot-area">
           <div class="mascot-circle">
-            <img src="assets/mascot.png" alt="Linh vật Mộc Linh - Green Aura">
+            <img src="assets/mascot.png" alt="Linh vật GreenAura">
           </div>
-          <div class="mascot-label">Mộc Linh xin chào!</div>
+          <div class="mascot-label">GreenAura</div>
         </div>
 
         <div class="prizes-area">

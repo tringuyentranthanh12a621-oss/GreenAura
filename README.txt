@@ -5,6 +5,7 @@ GREEN AURA - VÒNG QUAY MAY MẮN + MÃ QR
 - index.html      : Trang vòng quay thưởng.
 - qr-code.html    : Trang tạo mã QR dẫn đến trang vòng quay.
 - poster.html     : Trang poster A4 in ấn / standee có sẵn mã QR + phần thưởng.
+- poster-a5.html  : Trang poster A5 (nhỏ gọn, vẫn rõ chữ).
 - assets/         : Thư mục chứa logo, linh vật và hình phần thưởng.
 
 2. HƯỚNG DẪN THAY HÌNH ẢNH (LOGO / QUÀ / VẬT PHẨM)
@@ -13,7 +14,7 @@ bằng ảnh thật (PNG/JPG), giữ nguyên tên file:
 
   assets/logo-green-aura.png     -> Logo chính Green Aura (đã có từ PDF)
   assets/logo-icon.png           -> Biểu tượng hoa/icon (đã có từ PDF)
-  assets/mascot.png              -> Linh vật Mộc Linh (đã có từ PDF)
+  assets/mascot.png              -> Linh vật GreenAura (đã có từ PDF)
   assets/prize-keychain.svg      -> Móc khóa          (placeholder, hãy thay)
   assets/prize-fan.svg           -> Quạt cầm tay      (placeholder, hãy thay)
   assets/prize-voucher.svg       -> Voucher           (placeholder, hãy thay)
