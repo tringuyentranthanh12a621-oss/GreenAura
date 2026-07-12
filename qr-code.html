@@ -1,0 +1,86 @@
+﻿<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#2B4A32">
+  <title>Green Aura - Mã QR vòng quay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--g:#2B4A32;--g2:#1d3324;--olive:#8D9F4D;--sage:#9EC8B2;--gold:#F6D54C;--cream:#FCF8F3;--beige:#CBB8A6}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;font-family:"Mali",system-ui,-apple-system,"Segoe UI",sans-serif;color:#1a2e1f;background:radial-gradient(circle at 12% 14%,rgba(246,213,76,.18),transparent 25%),radial-gradient(circle at 88% 12%,rgba(158,200,178,.3),transparent 28%),linear-gradient(135deg,var(--cream),#f4f9f2)}
+    .card{width:min(960px,100%);display:grid;grid-template-columns:1fr 1fr;background:#fffc;border:1px solid #fff;border-radius:34px;overflow:hidden;box-shadow:0 28px 80px rgba(43,74,50,.22);backdrop-filter:blur(12px)}
+    .art{padding:50px;background:linear-gradient(155deg,var(--g),var(--g2));color:#fff;position:relative;overflow:hidden}
+    .art:before,.art:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.22);border-radius:50%;width:300px;height:300px;right:-160px;top:-130px}
+    .art:after{right:-90px;top:-70px}
+    .logo{width:74px;height:74px;border-radius:22px;background:#fff;display:grid;place-items:center;margin-bottom:28px;padding:7px;box-shadow:0 12px 28px rgba(0,0,0,.18),inset 0 0 0 1px rgba(43,74,50,.08)}
+    .logo img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 1px 2px rgba(43,74,50,.08))}
+    .art h1{font:700 46px/1.05 "Playfair Display",Georgia,serif;margin:0 0 18px}
+    .art p{line-height:1.75;color:#dce9df;font-size:14px}
+    .steps{margin-top:34px;display:grid;gap:14px}
+    .step{display:flex;gap:12px;align-items:center;font-size:14px}
+    .num{width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--g);display:grid;place-items:center;font-weight:900;flex:none}
+    .content{padding:42px;display:flex;flex-direction:column;align-items:center;text-align:center}
+    .content h2{font:700 31px "Playfair Display",Georgia,serif;color:var(--g);margin:0}
+    .content p{font-size:13px;color:#68786e;line-height:1.6;max-width:320px}
+    .qr-shell{background:#fff;border-radius:28px;padding:18px;margin:14px 0;box-shadow:0 16px 38px rgba(43,74,50,.15);border:8px solid var(--cream)}
+    #qr{width:260px;height:260px;display:block}
+    .field{width:100%;margin-top:12px;text-align:left}
+    .field label{font-size:11px;font-weight:800;color:var(--g);display:block;margin:0 0 7px;letter-spacing:.4px}
+    .field input{width:100%;border:1px solid rgba(43,74,50,.16);border-radius:14px;padding:13px 14px;font-size:13px;color:var(--g);background:#fffc;font-family:"Mali",sans-serif}
+    .buttons{margin-top:16px;display:flex;gap:10px;width:100%}
+    .primary{flex:1;border:0;border-radius:14px;background:var(--g);color:#fff;padding:13px 16px;font-weight:800;cursor:pointer;font-family:"Mali",sans-serif;box-shadow:0 10px 22px rgba(43,74,50,.22)}
+    .secondary{flex:1;border-radius:14px;border:1.5px solid var(--g);color:var(--g);padding:13px 16px;text-decoration:none;font-weight:800;background:#fff;font-family:"Mali",sans-serif}
+    .warning{margin-top:16px;background:#fff8e7;border:1px solid rgba(246,213,76,.4);color:#6b5a25;padding:12px 14px;border-radius:14px;font-size:12px;line-height:1.55;text-align:left;display:none}
+    .brand-foot{margin-top:auto;padding-top:18px;font-size:11px;color:#8a9a8d}
+    @media(max-width:780px){.card{grid-template-columns:1fr}.art{padding:34px 28px}.content{padding:28px}.art h1{font-size:36px}}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <section class="art">
+      <div class="logo"><img src="assets/logo-green-aura.png" alt="Green Aura"></div>
+      <h1>Quét mã,<br>quay quà xanh.</h1>
+      <p>Mã QR này dẫn người dùng trực tiếp đến trang vòng quay Green Aura. Giao diện được xây dựng theo tinh thần mỹ phẩm thuần chay: tự nhiên, dịu lành và bền vững.</p>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><span>Dùng camera điện thoại quét mã QR.</span></div>
+        <div class="step"><div class="num">2</div><span>Mở trang và nhấn “Quay ngay”.</span></div>
+        <div class="step"><div class="num">3</div><span>Chụp màn hình kết quả để nhận quà.</span></div>
+      </div>
+    </section>
+    <section class="content">
+      <h2>Mã QR vòng quay</h2>
+      <p>Trang tự động tạo mã QR dựa trên địa chỉ website đang chạy.</p>
+      <div class="qr-shell"><img id="qr" alt="Mã QR Green Aura"></div>
+      <div class="field">
+        <label>ĐƯỜNG DẪN TRANG QUAY THƯỞNG</label>
+        <input id="url" type="url">
+      </div>
+      <div class="buttons">
+        <button class="primary" id="refresh">Tạo lại mã QR</button>
+        <a class="secondary" id="open" target="_blank">Mở trang quay</a>
+      </div>
+      <div class="warning" id="warning"><b>Lưu ý:</b> địa chỉ đang là localhost/127.0.0.1 hoặc file:// nên điện thoại khác không truy cập được. Hãy mở thư mục bằng Live Server qua địa chỉ IP nội bộ của máy tính (ví dụ <code>http://192.168.1.x:5500</code>) để quét QR từ điện thoại cùng Wi-Fi.</div>
+      <div class="brand-foot">Green Aura • Kind to skin, kind to earth.</div>
+    </section>
+  </main>
+<script>
+const input=document.getElementById('url'),img=document.getElementById('qr'),openBtn=document.getElementById('open'),warn=document.getElementById('warning');
+const base=location.href.replace(/qr-code\.html(?:\?.*)?$/,'index.html');
+input.value=base;
+function make(){
+  const u=input.value.trim();
+  img.src='https://api.qrserver.com/v1/create-qr-code/?size=520x520&margin=14&color=2B4A32&bgcolor=ffffff&data='+encodeURIComponent(u);
+  openBtn.href=u;
+  warn.style.display=/(localhost|127\.0\.0\.1|file:|::1)/i.test(u)?'block':'none';
+}
+document.getElementById('refresh').onclick=make;
+input.addEventListener('keydown',e=>{if(e.key==='Enter')make()});
+make();
+</script>
+</body>
+</html>
+

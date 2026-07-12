@@ -1,0 +1,308 @@
+﻿<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#2B4A32" />
+  <title>Green Aura - Vòng quay thiên nhiên</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --forest:#2B4A32;
+      --deep:#1d3324;
+      --olive:#8D9F4D;
+      --sage:#9EC8B2;
+      --beige:#CBB8A6;
+      --brown:#9F8873;
+      --gold:#F6D54C;
+      --pink:#FFB2E1;
+      --cream:#FCF8F3;
+      --ivory:#FFFCF8;
+      --ink:#1a2e1f;
+      --white:#fff;
+      --shadow:0 24px 70px rgba(43,74,50,.16);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; min-height:100vh; color:var(--ink);
+      font-family:"Mali",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+      background:
+        radial-gradient(circle at 12% 10%,rgba(246,213,76,.16),transparent 24%),
+        radial-gradient(circle at 88% 12%,rgba(158,200,178,.28),transparent 30%),
+        linear-gradient(135deg,var(--ivory) 0%,#f4f9f2 48%,#faf5ea 100%);
+      overflow-x:hidden;
+    }
+    body:before,body:after{
+      content:""; position:fixed; z-index:-1; width:430px; height:430px; border:1px solid rgba(43,74,50,.08); border-radius:50%;
+    }
+    body:before{left:-250px;top:20vh;box-shadow:70px 30px 0 -1px rgba(43,74,50,.03),140px 70px 0 -1px rgba(43,74,50,.02)}
+    body:after{right:-260px;bottom:-130px;box-shadow:-60px -50px 0 -1px rgba(43,74,50,.03),-130px -90px 0 -1px rgba(43,74,50,.02)}
+    .shell{width:min(1200px,calc(100% - 28px));margin:22px auto;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(330px,.9fr);gap:24px;align-items:stretch}
+    .panel{background:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.95);box-shadow:var(--shadow);backdrop-filter:blur(18px);border-radius:32px;overflow:hidden}
+    .hero{position:relative;padding:34px 38px 28px;display:flex;flex-direction:column;min-height:calc(100vh - 44px)}
+    .brand-row{display:flex;align-items:center;justify-content:space-between;gap:18px;position:relative;z-index:4}
+    .brand-lockup{display:flex;align-items:center;gap:14px}
+    .brand-mark{width:64px;height:64px;border-radius:20px;background:var(--white);display:grid;place-items:center;box-shadow:0 10px 24px rgba(43,74,50,.16),inset 0 0 0 1px rgba(43,74,50,.08);padding:6px}
+    .brand-mark img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 1px 2px rgba(43,74,50,.08))}
+    .brand-title{font:700 32px/1 "Playfair Display",Georgia,serif;letter-spacing:.3px;color:var(--forest)}
+    .tagline{font:italic 13px/1.3 "Mali",sans-serif;color:var(--olive);margin-top:5px}
+    .pill{display:flex;align-items:center;gap:8px;border:1px solid rgba(43,74,50,.12);background:#fff9;padding:10px 13px;border-radius:999px;font-size:12px;font-weight:800;color:var(--forest)}
+    .pill i{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(246,213,76,.18)}
+    .headline{margin:26px 0 6px;max-width:700px;position:relative;z-index:2}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--olive);font-weight:800;font-size:12px;letter-spacing:1.6px;text-transform:uppercase}
+    .eyebrow:before{content:"";width:34px;height:2px;background:var(--gold)}
+    h1{margin:10px 0 8px;font:700 clamp(31px,4.4vw,56px)/1.05 "Playfair Display",Georgia,serif;color:var(--forest);letter-spacing:-.5px}
+    .lead{margin:0;color:#526b58;line-height:1.75;font-size:15px;max-width:640px}
+    .game-area{position:relative;flex:1;display:grid;place-items:center;padding:16px 0 4px;min-height:480px}
+    .botanical{position:absolute;pointer-events:none;opacity:.6}
+    .botanical.left{left:-12px;bottom:48px;width:150px;transform:rotate(-12deg)}
+    .botanical.right{right:-18px;top:32px;width:138px;transform:rotate(13deg)}
+    .wheel-wrap{position:relative;width:min(470px,82vw);aspect-ratio:1;display:grid;place-items:center;filter:drop-shadow(0 22px 30px rgba(43,74,50,.16))}
+    .halo{position:absolute;inset:-14px;border-radius:50%;background:conic-gradient(from 0deg,rgba(246,213,76,.22),rgba(255,255,255,.5),rgba(158,200,178,.42),rgba(255,255,255,.6),rgba(246,213,76,.22));animation:halo 12s linear infinite}
+    @keyframes halo{to{transform:rotate(360deg)}}
+    .wheel-frame{position:absolute;inset:0;border-radius:50%;background:#fff;border:11px solid var(--forest);box-shadow:inset 0 0 0 5px var(--gold),inset 0 0 0 10px #fff,0 16px 36px rgba(43,74,50,.16)}
+    canvas{width:100%;height:100%;border-radius:50%;display:block;position:relative;z-index:2;transition:transform 5.8s cubic-bezier(.12,.74,.14,1)}
+    .pointer{position:absolute;top:-21px;z-index:8;width:72px;height:88px;filter:drop-shadow(0 9px 10px rgba(43,74,50,.26))}
+    .hub{position:absolute;z-index:7;width:122px;height:122px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0 18%,var(--cream) 19% 100%);border:7px solid #fff;box-shadow:0 14px 28px rgba(43,74,50,.28),inset 0 0 0 4px var(--forest),inset 0 0 0 7px var(--gold);display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden}
+    .hub img{width:70%;height:70%;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(43,74,50,.12))}
+    .action-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:8px;position:relative;z-index:4}
+    .spin{border:0;border-radius:999px;background:linear-gradient(135deg,var(--forest),var(--deep));color:white;padding:16px 32px;min-width:190px;font-size:15px;font-weight:900;letter-spacing:.3px;cursor:pointer;box-shadow:0 14px 28px rgba(43,74,50,.30);transition:.25s;font-family:"Mali",sans-serif}
+    .spin:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 18px 36px rgba(43,74,50,.36)}
+    .spin:disabled{opacity:.62;cursor:not-allowed;transform:none}
+    .icon-btn{width:49px;height:49px;border-radius:50%;border:1px solid rgba(43,74,50,.14);background:#fff;color:var(--forest);cursor:pointer;font-size:20px;box-shadow:0 10px 22px rgba(43,74,50,.11);display:grid;place-items:center}
+    .note{text-align:center;font-size:11px;color:#6e8174;margin-top:11px}
+    .side{display:flex;flex-direction:column;min-height:calc(100vh - 44px)}
+    .side-top{padding:30px 30px 22px;background:linear-gradient(160deg,var(--forest),#1d3b26 60%,#2f5a3d);color:#fff;position:relative;overflow:hidden}
+    .side-top:after{content:"";position:absolute;width:220px;height:220px;border:1px solid rgba(255,255,255,.18);border-radius:50%;right:-100px;top:-80px;box-shadow:-38px 52px 0 -1px rgba(255,255,255,.08)}
+    .side-top h2{margin:0;font:700 29px/1.1 "Playfair Display",Georgia,serif}.side-top p{margin:8px 0 0;color:#e0efe2;line-height:1.65;font-size:13px;max-width:330px}
+    .prizes{padding:24px 22px 14px;display:grid;grid-template-columns:1fr 1fr;gap:13px;flex:1}
+    .prize-card{border:1px solid rgba(43,74,50,.09);border-radius:20px;background:#fff;padding:14px;display:flex;align-items:center;gap:12px;min-height:90px;transition:.2s;box-shadow:0 4px 14px rgba(43,74,50,.05)}
+    .prize-card:hover{transform:translateY(-3px);border-color:rgba(43,74,50,.18);box-shadow:0 12px 26px rgba(43,74,50,.10)}
+    .prize-icon{width:56px;height:56px;border-radius:17px;display:grid;place-items:center;flex:none;background:var(--cream);overflow:hidden;box-shadow:inset 0 0 0 1px rgba(43,74,50,.06)}
+    .prize-icon img{width:100%;height:100%;object-fit:contain;padding:4px}
+    .prize-icon.fallback{font-size:28px}
+    .prize-card:nth-child(1) .prize-icon{background:#f7eedc}
+    .prize-card:nth-child(2) .prize-icon{background:#e8f3e4}
+    .prize-card:nth-child(3) .prize-icon{background:#fff2ce}
+    .prize-card:nth-child(4) .prize-icon{background:#f3e9de}
+    .prize-card:nth-child(5) .prize-icon{background:#d4e8d2}
+    .prize-card:nth-child(6) .prize-icon{background:#f9f4e8}
+    .prize-card b{display:block;color:var(--forest);font-size:14px;line-height:1.25;font-weight:800}.prize-card span{display:block;font-size:11px;color:#5e7565;margin-top:4px;line-height:1.45}
+    .mascot-card{margin:8px 22px 18px;border-radius:24px;background:linear-gradient(135deg,#edf5e9,#fff8e7);border:1px solid rgba(43,74,50,.10);padding:14px;display:flex;align-items:center;gap:14px}
+    .mascot{width:88px;height:88px;flex:none;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 8px 18px rgba(43,74,50,.12)}
+    .mascot-copy b{font:700 17px "Playfair Display",Georgia,serif;color:var(--forest)}.mascot-copy p{font-size:12px;line-height:1.55;margin:5px 0 0;color:#65756b}
+    .footer{padding:13px 25px 18px;color:#7a887f;font-size:10px;text-align:center}
+    .modal{position:fixed;inset:0;background:rgba(11,36,24,.55);backdrop-filter:blur(8px);display:none;place-items:center;padding:20px;z-index:50}.modal.show{display:grid}
+    .modal-card{width:min(440px,100%);background:#fff;border-radius:30px;padding:30px;text-align:center;box-shadow:0 28px 80px rgba(0,0,0,.28);position:relative;overflow:hidden;animation:pop .45s ease}
+    @keyframes pop{from{transform:scale(.78);opacity:0}to{transform:scale(1);opacity:1}}
+    .modal-card:before{content:"";position:absolute;inset:0 0 auto;height:9px;background:linear-gradient(90deg,var(--forest),var(--gold),var(--sage))}
+    .win-icon{width:96px;height:96px;margin:4px auto 14px;border-radius:26px;background:var(--cream);display:grid;place-items:center;overflow:hidden;border:2px solid rgba(43,74,50,.08)}
+    .win-icon img{width:100%;height:100%;object-fit:contain;padding:6px}
+    .win-icon.fallback{font-size:44px;transform:rotate(-5deg)}
+    .modal h3{margin:0;font:700 29px "Playfair Display",Georgia,serif;color:var(--forest)}.modal p{color:#64746a;line-height:1.65}.modal strong{color:var(--deep)}
+    .close{border:0;background:var(--forest);color:#fff;padding:13px 28px;border-radius:999px;font-weight:800;cursor:pointer;font-family:"Mali",sans-serif}
+    .confetti{position:fixed;width:9px;height:14px;top:-20px;z-index:60;pointer-events:none;animation:fall 2.6s linear forwards}
+    @keyframes fall{to{transform:translate(var(--x),110vh) rotate(720deg);opacity:.15}}
+    @media(max-width:920px){.shell{grid-template-columns:1fr}.hero,.side{min-height:auto}.hero{padding:25px 20px}.side{margin-bottom:24px}.side-top{text-align:center}.side-top p{margin-inline:auto}}
+    @media(max-width:560px){.brand-title{font-size:26px}.pill{display:none}h1{font-size:34px}.lead{font-size:13px}.game-area{min-height:390px}.wheel-wrap{width:min(360px,88vw)}.hub{width:94px;height:94px}.prizes{grid-template-columns:1fr}.botanical{display:none}.hero{border-radius:24px}.panel{border-radius:24px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="panel hero">
+      <div class="brand-row">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true">
+            <img src="assets/logo-green-aura.png" alt="Green Aura">
+          </div>
+          <div><div class="brand-title">Green Aura</div><div class="tagline">“Kind to skin, kind to earth.”</div></div>
+        </div>
+        <div class="pill"><i></i> Quà xanh mỗi ngày</div>
+      </div>
+
+      <div class="headline">
+        <div class="eyebrow">Vòng quay thiên nhiên</div>
+        <h1>Chạm một vòng quay,<br>nhận một niềm vui xanh.</h1>
+        <p class="lead">Khám phá phần quà nhỏ xinh từ Green Aura. Mỗi lượt quay là một lời cảm ơn dành cho bạn — người cùng chúng tôi yêu làn da và trân trọng Trái Đất.</p>
+      </div>
+
+      <div class="game-area">
+        <svg class="botanical left" viewBox="0 0 180 260" fill="none"><path d="M86 250C83 177 81 108 124 18" stroke="#2B4A32" stroke-width="3"/><path d="M100 180C66 163 42 168 20 187c28 13 55 8 80-7Z" fill="#9EC8B2"/><path d="M112 132C80 108 56 108 31 121c24 22 51 27 81 11Z" fill="#F6D54C" fill-opacity=".55"/><path d="M121 83c28-20 49-19 66-8-16 24-37 30-66 8Z" fill="#8D9F4D"/></svg>
+        <svg class="botanical right" viewBox="0 0 180 260" fill="none"><path d="M91 250C95 172 93 105 58 18" stroke="#2B4A32" stroke-width="3"/><path d="M80 175c33-20 57-17 81 1-23 18-49 20-81-1Z" fill="#9EC8B2"/><path d="M69 126c31-22 55-21 80-6-24 20-50 23-80 6Z" fill="#F6D54C" fill-opacity=".55"/><path d="M59 77C31 58 10 61-6 73c17 22 38 27 65 4Z" fill="#8D9F4D"/></svg>
+
+        <div class="wheel-wrap">
+          <div class="halo"></div><div class="wheel-frame"></div>
+          <svg class="pointer" viewBox="0 0 72 88" aria-hidden="true"><path d="M36 2C20 2 8 14 8 30c0 20 28 54 28 54s28-34 28-54C64 14 52 2 36 2Z" fill="#2B4A32" stroke="#fff" stroke-width="5"/><circle cx="36" cy="29" r="11" fill="#F6D54C"/><circle cx="36" cy="29" r="5" fill="#fff"/></svg>
+          <canvas id="wheel" width="900" height="900" aria-label="Vòng quay phần thưởng"></canvas>
+          <div class="hub" aria-hidden="true">
+            <img src="assets/logo-icon.png" alt="Green Aura">
+          </div>
+        </div>
+      </div>
+      <div class="action-row"><button class="icon-btn" id="soundBtn" title="Bật/tắt âm thanh">🔊</button><button class="spin" id="spinBtn">QUAY NGAY</button><button class="icon-btn" id="infoBtn" title="Thể lệ">ⓘ</button></div>
+      <div class="note">Mỗi khách hàng được tham gia theo thể lệ tại điểm tổ chức.</div>
+    </section>
+
+    <aside class="panel side">
+      <div class="side-top"><h2>Hôm nay bạn sẽ nhận được gì?</h2><p>Sáu phần quà dễ thương, thiết thực và đúng tinh thần sống xanh của Green Aura.</p></div>
+      <div class="prizes" id="prizeList">
+        <div class="prize-card" data-prize="0"><div class="prize-icon"><img src="assets/prize-keychain.svg" alt="" onerror="this.parentElement.classList.add('fallback');this.parentElement.textContent='🌿';this.remove()"></div><div><b>Móc khóa Green Aura</b><span>Mang linh vật xanh bên bạn</span></div></div>
+        <div class="prize-card" data-prize="1"><div class="prize-icon"><img src="assets/prize-fan.svg" alt="" onerror="this.parentElement.classList.add('fallback');this.parentElement.textContent='🪭';this.remove()"></div><div><b>Quạt cầm tay</b><span>Mát lành và tiện dụng</span></div></div>
+        <div class="prize-card" data-prize="2"><div class="prize-icon"><img src="assets/prize-voucher.svg" alt="" onerror="this.parentElement.classList.add('fallback');this.parentElement.textContent='🎟️';this.remove()"></div><div><b>Voucher mua sắm</b><span>Ưu đãi cho lần ghé tiếp theo</span></div></div>
+        <div class="prize-card" data-prize="3"><div class="prize-icon"><img src="assets/prize-bear.svg" alt="" onerror="this.parentElement.classList.add('fallback');this.parentElement.textContent='🧸';this.remove()"></div><div><b>Gấu bông Green Aura</b><span>Mềm mại, đáng yêu</span></div></div>
+        <div class="prize-card" data-prize="4"><div class="prize-icon"><img src="assets/prize-discount.svg" alt="" onerror="this.parentElement.classList.add('fallback');this.parentElement.textContent='10%';this.remove()"></div><div><b>Giảm 10% hóa đơn</b><span>Áp dụng cho hóa đơn tiếp theo</span></div></div>
+        <div class="prize-card" data-prize="5"><div class="prize-icon"><img src="assets/prize-luck.svg" alt="" onerror="this.parentElement.classList.add('fallback');this.parentElement.textContent='🍀';this.remove()"></div><div><b>May mắn lần sau</b><span>Đừng buồn, điều xanh vẫn chờ</span></div></div>
+      </div>
+      <div class="mascot-card">
+        <img class="mascot" src="assets/mascot.png" alt="Linh vật Green Aura - Mộc Linh">
+        <div class="mascot-copy"><b>Xin chào, tớ là Mộc Linh!</b><p>Hãy nhấn “Quay ngay” và để năng lượng thiên nhiên mang điều bất ngờ đến với bạn nhé.</p></div>
+      </div>
+      <div class="footer">Green Aura - Mỹ phẩm thuần chay • An toàn • Tự nhiên • Bền vững</div>
+    </aside>
+  </main>
+
+  <div class="modal" id="resultModal">
+    <div class="modal-card">
+      <div class="win-icon" id="winIcon"><img src="assets/prize-luck.svg" alt="" id="winImg" onerror="this.style.display='none';this.parentElement.classList.add('fallback');this.parentElement.insertBefore(document.createTextNode('🎁'),this)"></div>
+      <h3 id="resultTitle">Chúc mừng bạn!</h3>
+      <p id="resultText"></p>
+      <button class="close" id="closeModal">Tuyệt vời!</button>
+    </div>
+  </div>
+  <div class="modal" id="rulesModal">
+    <div class="modal-card">
+      <div class="win-icon fallback">🌱</div>
+      <h3>Thể lệ vòng quay</h3>
+      <p>Mỗi lượt nhấn sẽ chọn ngẫu nhiên một phần quà. Kết quả hiển thị trên màn hình là kết quả cuối cùng. Vui lòng liên hệ nhân viên Green Aura để nhận quà và áp dụng điều kiện chương trình.</p>
+      <button class="close" id="closeRules">Đã hiểu</button>
+    </div>
+  </div>
+
+<script>
+const prizes=[
+  {name:'Móc khóa Green Aura',short:'Móc khóa',icon:'🌿',file:'assets/prize-keychain.svg',color:'#f7eedc'},
+  {name:'Quạt cầm tay',short:'Quạt',icon:'🪭',file:'assets/prize-fan.svg',color:'#e8f3e4'},
+  {name:'Voucher mua sắm',short:'Voucher',icon:'🎟️',file:'assets/prize-voucher.svg',color:'#fff2ce'},
+  {name:'Gấu bông Green Aura',short:'Gấu bông',icon:'🧸',file:'assets/prize-bear.svg',color:'#f3e9de'},
+  {name:'Giảm 10% cho hóa đơn tiếp theo',short:'Giảm 10%',icon:'10%',file:'assets/prize-discount.svg',color:'#d4e8d2'},
+  {name:'Chúc bạn may mắn lần sau',short:'May mắn',icon:'🍀',file:'assets/prize-luck.svg',color:'#f9f4e8'}
+];
+const canvas=document.getElementById('wheel'),ctx=canvas.getContext('2d'),spinBtn=document.getElementById('spinBtn');
+let rotation=0,spinning=false,soundOn=true;
+let loadedImages={};
+
+function loadPrizeImages(){
+  return Promise.all(prizes.map((p,i)=>new Promise(resolve=>{
+    const img=new Image();
+    img.crossOrigin='anonymous';
+    img.onload=()=>{loadedImages[i]=img;resolve();};
+    img.onerror=()=>{loadedImages[i]=null;resolve();};
+    img.src=p.file;
+  })));
+}
+
+function wrapText(text,max){
+  const words=text.split(' '),lines=[];let line='';
+  for(const w of words){
+    const t=line?line+' '+w:w;
+    if(ctx.measureText(t).width>max&&line){lines.push(line);line=w}else line=t
+  }
+  lines.push(line);
+  return lines.slice(0,3)
+}
+
+function drawWheel(){
+  const c=canvas.width/2,r=canvas.width/2-24,a=Math.PI*2/prizes.length;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(let i=0;i<prizes.length;i++){
+    const s=-Math.PI/2+i*a,e=s+a, mid=s+a/2;
+    ctx.beginPath();ctx.moveTo(c,c);ctx.arc(c,c,r,s,e);ctx.closePath();
+    ctx.fillStyle=prizes[i].color;ctx.fill();
+    ctx.lineWidth=8;ctx.strokeStyle='#fff';ctx.stroke();
+
+    // Position at segment center, then rotate back so icon/text stay upright
+    ctx.save();
+    ctx.translate(c,c);ctx.rotate(mid);
+    ctx.translate(r*.68,0);
+    ctx.rotate(-mid);
+    ctx.textAlign='center';
+
+    // Prize image/icon (upright)
+    const img=loadedImages[i];
+    if(img){
+      const size=95;
+      try{ctx.drawImage(img,-size/2,-size/2-10,size,size);}catch(err){}
+    }else{
+      ctx.fillStyle='#2B4A32';
+      ctx.font='900 54px system-ui';
+      ctx.fillText(prizes[i].icon,0,-10);
+    }
+
+    // Prize short name (upright)
+    ctx.fillStyle='#2B4A32';
+    ctx.font='900 24px "Mali",system-ui';
+    ctx.fillText(prizes[i].short,0,58);
+    ctx.restore();
+  }
+  ctx.beginPath();ctx.arc(c,c,r,0,Math.PI*2);ctx.lineWidth=15;ctx.strokeStyle='#2B4A32';ctx.stroke();
+  ctx.beginPath();ctx.arc(c,c,r-15,0,Math.PI*2);ctx.lineWidth=5;ctx.strokeStyle='#F6D54C';ctx.stroke();
+}
+
+loadPrizeImages().then(drawWheel);
+
+function beep(){
+  if(!soundOn)return;
+  try{
+    const ac=new (window.AudioContext||window.webkitAudioContext)(),o=ac.createOscillator(),g=ac.createGain();
+    o.frequency.value=640;o.type='sine';
+    g.gain.setValueAtTime(.035,ac.currentTime);
+    g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+.12);
+    o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+.12);
+  }catch(e){}
+}
+function confetti(){
+  const colors=['#2B4A32','#F6D54C','#9EC8B2','#8D9F4D','#FFB2E1','#fff'];
+  for(let i=0;i<70;i++){
+    const d=document.createElement('i');d.className='confetti';
+    d.style.left=Math.random()*100+'vw';
+    d.style.background=colors[i%colors.length];
+    d.style.setProperty('--x',(Math.random()*240-120)+'px');
+    d.style.animationDelay=(Math.random()*.35)+'s';
+    document.body.appendChild(d);setTimeout(()=>d.remove(),3200);
+  }
+}
+
+spinBtn.onclick=()=>{
+  if(spinning)return;
+  spinning=true;spinBtn.disabled=true;spinBtn.textContent='ĐANG QUAY...';
+  document.getElementById('resultModal').classList.remove('show');
+  const idx=Math.floor(Math.random()*prizes.length),seg=360/prizes.length,target=360*7+(360-(idx*seg+seg/2));
+  rotation+=target+(360-(rotation%360));
+  canvas.style.transform=`rotate(${rotation}deg)`;
+  let ticks=0;const timer=setInterval(()=>{beep();if(++ticks>24)clearInterval(timer)},160);
+  setTimeout(()=>{
+    const p=prizes[idx];
+    const winImg=document.getElementById('winImg');
+    winImg.src=p.file;winImg.style.display='';
+    winImg.parentElement.classList.remove('fallback');
+    // Remove any old fallback text node created by onerror
+    winImg.parentElement.childNodes.forEach(n=>{if(n.nodeType===3&&n!==winImg)n.remove()});
+    document.getElementById('resultTitle').textContent=p.name.includes('may mắn')?'Hẹn bạn ở lượt quay tiếp theo!':'Chúc mừng bạn!';
+    document.getElementById('resultText').innerHTML=p.name.includes('may mắn')?`Lần này bạn nhận được <strong>${p.name}</strong>. Năng lượng xanh vẫn đang chờ bạn ở những trải nghiệm tiếp theo.`:`Bạn đã nhận được <strong>${p.name}</strong>. Hãy chụp lại màn hình và liên hệ nhân viên Green Aura để nhận quà nhé.`;
+    document.getElementById('resultModal').classList.add('show');
+    if(!p.name.includes('may mắn'))confetti();
+    spinBtn.disabled=false;spinBtn.textContent='QUAY LẠI';spinning=false;
+  },5900);
+};
+
+document.getElementById('closeModal').onclick=()=>document.getElementById('resultModal').classList.remove('show');
+document.getElementById('infoBtn').onclick=()=>document.getElementById('rulesModal').classList.add('show');
+document.getElementById('closeRules').onclick=()=>document.getElementById('rulesModal').classList.remove('show');
+document.getElementById('soundBtn').onclick=e=>{soundOn=!soundOn;e.currentTarget.textContent=soundOn?'🔊':'🔇'};
+</script>
+</body>
+</html>
+
