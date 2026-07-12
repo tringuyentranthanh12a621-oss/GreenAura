@@ -136,7 +136,11 @@
     @page { size: A4 portrait; margin: 0; }
     @media print{
       body{background:#fff;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-      .page{width:210mm;height:297mm;box-shadow:none;overflow:hidden}
+      .page{
+        width:210mm;height:297mm;box-shadow:none;overflow:hidden;
+        transform:scale(0.88);transform-origin:top center;
+        margin:0 auto;
+      }
       .no-print{display:none!important}
       .header{padding:18mm 18mm 14mm;clip-path:none}
       .main{padding:8mm 16mm 6mm;gap:6mm}
